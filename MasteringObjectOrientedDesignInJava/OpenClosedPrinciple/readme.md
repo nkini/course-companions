@@ -55,6 +55,11 @@ public class HospitalManagement {
 The fix to this would look something like:
 
 ```java
+
+public abstract class Employee {
+    public abstract performDuties();
+}
+
 public class HospitalManagement {
     public void callUpon(Employee employee) {
         employee.performDuties();
