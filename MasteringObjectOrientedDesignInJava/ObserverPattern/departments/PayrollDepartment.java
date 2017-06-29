@@ -1,9 +1,12 @@
 package departments;
 
+import databases.Employee;
+
 public class PayrollDepartment implements IObserver {
 
-    public void callMe(String message) {
-        System.out.println("Payroll Department was notified: " + message);
+    public void callMe(String message, Employee emp) {
+        System.out.println("Payroll Department was notified");
+        System.out.println(message + " : " + emp.getName());
     }
 
 }

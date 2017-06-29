@@ -18,10 +18,12 @@ public class EmployeeManagementSystem {
         employees = employeeDAO.generateEmployees();
     }   
 
-
-    public void notifyAllDepartments(String message) {
+    // I'm not sure what's the better thing to do...
+    // In the Instructor solution, we have no arguments, and instance variables for message and employee.
+    // I, however, feel like this is more transparent.
+    public void notifyAllDepartments(String message, Employee employee) {
         for (IObserver observer : observerList) {
-            observer.callMe(message);
+            observer.callMe(message, employee);
         }
     }
 
@@ -30,11 +32,20 @@ public class EmployeeManagementSystem {
         observerList.add(observer);
     }
 
+    public void removeObserver(IObserver observer) {
+        // Didn't know you could so easily remove an object from a List
+        observerList.remove(observer);
+    }
+
 
     public void hireNewEmployee(Employee employee) {
         employeeDAO.addEmployee(employee);
-        System.out.println("\nNew hire: " + employee.getName());
-        notifyAllDepartments("New employee added");
+        // While I like the format of this message better,
+        //     I do feel like the notification should come from the departments...
+        //     But then judging by the repeated code in the departments, 
+        //     I think I like the older design with the prints here.
+        //System.out.println("\nNew hire: " + employee.getName());
+        notifyAllDepartments("New employee added", employee);
     }
 
 
@@ -44,8 +55,10 @@ public class EmployeeManagementSystem {
             if (id == employee.getId()) {
                 String oldName = employee.getName();
                 employee.setName(newName);
-                System.out.println("\nEmployee name changed from " + oldName + " to " + newName);
-                notifyAllDepartments("Employee name modified");
+                // While I like the format of this message better,
+                //     I do feel like the notification should come from the departments...
+                // System.out.println("\nEmployee name changed from " + oldName + " to " + newName);
+                notifyAllDepartments("Employee name modified", employee);
                 employeeFound = true;
                 break;
             }

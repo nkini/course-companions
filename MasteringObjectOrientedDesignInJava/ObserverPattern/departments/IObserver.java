@@ -1,7 +1,9 @@
 package departments;
 
+import databases.Employee;
+
 public interface IObserver {
 
-    public void callMe(String message);
+    public void callMe(String message, Employee emp);
 
 }
