@@ -1,28 +1,34 @@
 import java.sql.Connection;
 
+// According to Imtiaz, this class still has a lot of responsibility
+// Other modules might be HR module and Reporting module and User module
+// Also, it is very tightly coupled to Employee internals. 
+//     Ref: EmployeeDAO and EmployeeReportFormatter instantiation.
+// For now, this is what we work with though.
 public class ClientModule {
 
-    static EmployeeDAO employeeDAO;
-    static EmployeeReportFormatter empRF;
+    // Since the UML doesn't not contain these associations, they are removed
+    //static EmployeeDAO employeeDAO;    
+    //static EmployeeReportFormatter empRF;
 
     public static void hireNewEmployee(Employee emp) {
+        EmployeeDAO employeeDAO = new EmployeeDAO();
         employeeDAO.saveEmployee(emp);
         System.out.println("Created new employee "+emp.name);
     }
 
     public static void terminateEmployee(Employee emp) {
+        EmployeeDAO employeeDAO = new EmployeeDAO();
         employeeDAO.deleteEmployee(emp);
         System.out.println("Deleted employee "+emp.name);
     }
 
-    public static void printEmployeeReport(Employee emp, EmployeeReportFormatter.FormatType f) {
-        empRF = new EmployeeReportFormatter(emp, f);
+    public static void printEmployeeReport(Employee emp, FormatType f) {
+        EmployeeReportFormatter empRF = new EmployeeReportFormatter(emp, f);
         empRF.getFormattedEmployee();
     }
 
     public static void main(String args[]) throws Exception {
-        DatabaseConnectionManager dbmgr = DatabaseConnectionManager.getManagerInstance();
-        employeeDAO = new EmployeeDAO(dbmgr);
 
         Employee employee1 = new Employee(1001, "emp1", "geriatric", false);
         hireNewEmployee(employee1);
@@ -35,13 +41,11 @@ public class ClientModule {
         Employee employee5 = new Employee(1005, "who", "doctor", true);
         hireNewEmployee(employee5);
 
-        printEmployeeReport(employee2, EmployeeReportFormatter.FormatType.CSV);
-        printEmployeeReport(employee3, EmployeeReportFormatter.FormatType.XML);
+        printEmployeeReport(employee2, FormatType.CSV);
+        printEmployeeReport(employee3, FormatType.XML);
 
         terminateEmployee(employee1);
         terminateEmployee(employee5);
-
-        dbmgr.disconnect();
     }
 
 }

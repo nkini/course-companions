@@ -1,8 +1,13 @@
 import java.lang.reflect.*;
 
-public abstract class ReportFormatter {
+// Not abstract anymore
+public class ReportFormatter {
 
-    public String convertObjectToXML(Object object) {
+    // Well, this wasn't in the UML, so don't follow everything to the letter
+    String formattedValue;
+
+    // the minus means the methods are private
+    private String convertObjectToXML(Object object) {
 
         String xml = "";
         xml += "<" + object.getClass().getName() + ">\n";
@@ -23,7 +28,8 @@ public abstract class ReportFormatter {
 
     }
     
-    public String convertObjectToCSV(Object object) {
+    // the minus means the methods are private
+    private String convertObjectToCSV(Object object) {
 
         String[] fieldValues = new String[object.getClass().getDeclaredFields().length];
         
@@ -43,6 +49,23 @@ public abstract class ReportFormatter {
 
     }
     
-    public abstract String getFormattedValue();
+    // Not abstract, but applicable to any child
+    public String getFormattedValue() {
+        return formattedValue;
+    }
+
+    // Since the functions are now private, you will need a way to call them somehow
+
+    // Create a constructor
+    public ReportFormatter(Object object, FormatType formatType) {
+        switch(formatType) {
+            case XML:
+                formattedValue = convertObjectToXML(object);
+                break;
+            case CSV:
+                formattedValue = convertObjectToCSV(object);
+                break;
+        }
+    }
 
 }

@@ -11,5 +11,7 @@ public class Employee {
         this.department = dept;
         this.working = working;
     }
+
+    // You should also override the toString() method
     
 }
