@@ -27,3 +27,10 @@ Key Idea: Abstract Classes and Interfaces don't change as often as concrete deri
 - Package names should correspond to important high level concepts.
 - Package design should have high cohesion as a goal.
 - A package should have a single feature, analogous to classes should have a single responsibility.
+
+
+#### A note on the package design in this solution
+- Motivation: assemble, test, store and package should not be visible on the GeneralManufacturingProcess. Clients shouldn't be able to call it in any order possible.
+- Solution: Use protected modifier with packaging scheme.
+- Keeping clients in a separate package from processes, and making the methods protected allows for making the protected methods invisible to the clients.
+- Keep in mind that any class in the processes package will have access to the GeneralManufacturingProcess protected methods though. So it is important to make sure that the package has only relevant classes, in this case only GeneralManufacturingProcess subclasses.

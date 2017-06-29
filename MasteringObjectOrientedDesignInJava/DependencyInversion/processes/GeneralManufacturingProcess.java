@@ -1,3 +1,5 @@
+package processes;
+
 public abstract class GeneralManufacturingProcess {
 
     // Making this private makes it invisible in sub-classes
@@ -14,8 +16,11 @@ public abstract class GeneralManufacturingProcess {
         this.deviceType = deviceType;
     }
 
-    public abstract void assemble();
-    public abstract void test();
-    public abstract void pack();
-    public abstract void store();
+    // Notice that the methods are all protected. 
+    // The importance is that these methods should not
+    //    be visible to the clients, only manufacture should be visible.
+    protected abstract void assemble();
+    protected abstract void test();
+    protected abstract void pack();
+    protected abstract void store();
 }

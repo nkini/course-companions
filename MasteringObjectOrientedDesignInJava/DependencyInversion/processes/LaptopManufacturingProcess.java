@@ -1,23 +1,25 @@
+package processes;
+
 public class LaptopManufacturingProcess extends GeneralManufacturingProcess {
 
     public LaptopManufacturingProcess(String deviceType) {
         super(deviceType);
     }
 
-    public void assemble() {
+    protected void assemble() {
         System.out.println("Assembling a laptop: " + this.deviceType);
         addBattery();
         addScreen();
         addSoftware();
     }
 
-    public void test() {
+    protected void test() {
         System.out.println("Testing a laptop: " + this.deviceType);
         System.out.println("Software boot... passed");
         System.out.println("Wireless test... passed");
     }
 
-    public void pack() {
+    protected void pack() {
         System.out.println("Packing a laptop: " + this.deviceType);
     }
 
