@@ -24,3 +24,6 @@ User websiteUser = new User("username","email@abc.com","first","last");
 - Important things to keep in mind:
     - The Builder class must be public static.
     - All methods must return the Builder.
+- Two other advantages are that:
+    - The code looks prettier
+    - The order of which attributes you set does not matter (whereas in a constructor it does)
