@@ -1,3 +1,5 @@
 *.class
 .ipynb_checkpoints
 *.db
+*.o
+*.pyc
