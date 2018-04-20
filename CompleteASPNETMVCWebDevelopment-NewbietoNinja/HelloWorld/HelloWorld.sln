@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpPrimer", "HelloWorld\CSharpPrimer.csproj", "{E8C549AF-12D6-4878-8746-4A10250BBE16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramFlow", "ProgramFlow\ProgramFlow.csproj", "{1872F933-B075-4A42-8D14-448E2B67CEA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8C549AF-12D6-4878-8746-4A10250BBE16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C549AF-12D6-4878-8746-4A10250BBE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C549AF-12D6-4878-8746-4A10250BBE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C549AF-12D6-4878-8746-4A10250BBE16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1872F933-B075-4A42-8D14-448E2B67CEA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1872F933-B075-4A42-8D14-448E2B67CEA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1872F933-B075-4A42-8D14-448E2B67CEA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1872F933-B075-4A42-8D14-448E2B67CEA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
